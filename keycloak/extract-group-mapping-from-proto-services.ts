@@ -15,7 +15,7 @@ import {
   stringifyOptionName,
 } from "https://deno.land/x/pbkit@v0.0.10/core/schema/stringify-ast-frag.ts";
 
-interface Table {
+export interface Table {
   [key: string]: string[];
 }
 
@@ -52,7 +52,7 @@ function joinTypePath(...fragments: string[]): string {
   return fragments.filter((fragment) => fragment).join(".");
 }
 
-function getMethodNameToKeycloakGroupTable(ast: ast.Proto): Table {
+export function getMethodNameToKeycloakGroupTable(ast: ast.Proto): Table {
   const result: Table = {};
   const packagePath = getPackage(ast.statements);
   for (const service of filterNodesByType(ast.statements, "service")) {
@@ -99,7 +99,7 @@ function getOptions(nodes?: ast.Node[]): Options {
   return result;
 }
 
-function invert(table: Table): Table {
+export function invert(table: Table): Table {
   const result: Table = {};
   for (const [key, value] of Object.entries(table)) {
     const arr = value.length ? value : [""];
