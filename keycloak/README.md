@@ -8,6 +8,14 @@ Extract the rpc -> keycloak group mapping from the protobuf schema.
 
 ### 설치 Installation
 
+[toolbelt][toolbelt]를 설치하면 바로 사용할 수 있습니다.
+
+Install the [toolbelt][toolbelt] and you're ready to go.
+
+[toolbelt]: ../README.md#Installation
+
+#### 직접 설치 Manual installation
+
 ```sh
 git clone git@github.com:riiid/toolbelt.git
 deno install -n riiid-extract-keycloak-groups -A --unstable toolbelt/keycloak/extract-group-mapping-from-proto-services.ts
