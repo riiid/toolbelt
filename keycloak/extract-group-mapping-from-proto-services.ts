@@ -26,6 +26,7 @@ if (import.meta.main) {
   }
   const command = new Command();
   command
+    .name("riiid-extract-keycloak-groups")
     .arguments("<dir:string>")
     .option("-i, --invert", "invert result")
     .option("-y, --yaml", "print as yaml")
