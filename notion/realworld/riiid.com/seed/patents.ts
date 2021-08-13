@@ -1,5 +1,5 @@
 import firebaseData from "./legacy-firebase-data.ts";
-import { Patent } from "../index.ts";
+import { Patent } from "../schema/index.ts";
 
 if (import.meta.main) {
   for (const item of iterPatents()) {

@@ -1,6 +1,12 @@
 import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
 import { createPage, getHeaders, Parent } from "../../../api.ts";
-import { PropertySchema, toProperties } from "../../../property.ts";
+import { toProperties } from "../../../property.ts";
+import {
+  getCompanyHistorySchema,
+  getFeaturedNewsSchema,
+  getNewsSchema,
+  getPatentSchema,
+} from "../schema/index.ts";
 import { iterCompanyHistory } from "./company-history.ts";
 import { iterPatents } from "./patents.ts";
 import { iterNews } from "./news.ts";
@@ -125,90 +131,4 @@ async function initFeaturedNews(headers: Headers, databaseId: string) {
       [],
     );
   }
-}
-
-function getCompanyHistorySchema(): PropertySchema {
-  return {
-    year: {
-      type: "title",
-      title: {},
-    },
-    lang: {
-      type: "select",
-      select: {
-        options: [{ name: "en" }, { name: "ko" }],
-      },
-    },
-  };
-}
-
-function getPatentSchema(): PropertySchema {
-  return {
-    "name-ko": {
-      type: "title",
-      title: {},
-    },
-    "name-en": {
-      type: "rich_text",
-      rich_text: {},
-    },
-    link: {
-      type: "url",
-      url: {},
-    },
-    date: {
-      type: "date",
-      date: {},
-    },
-  };
-}
-
-function getNewsSchema(): PropertySchema {
-  return {
-    name: {
-      type: "title",
-      title: {},
-    },
-    link: {
-      type: "url",
-      url: {},
-    },
-    date: {
-      type: "date",
-      date: {},
-    },
-  };
-}
-
-function getFeaturedNewsSchema(): PropertySchema {
-  return {
-    name: {
-      type: "title",
-      title: {},
-    },
-    link: {
-      type: "url",
-      url: {},
-    },
-    date: {
-      type: "date",
-      date: {},
-    },
-    preview: {
-      type: "url",
-      url: {},
-    },
-    preview2x: {
-      type: "url",
-      url: {},
-    },
-    thumbnail: {
-      type: "url",
-      url: {},
-    },
-    thumbnail2x: {
-      type: "url",
-      url: {},
-    },
-  };
 }

@@ -1,5 +1,5 @@
 import firebaseData from "./legacy-firebase-data.ts";
-import { FeaturedNews } from "../index.ts";
+import { FeaturedNews } from "../schema/index.ts";
 
 if (import.meta.main) {
   for (const item of iterFeaturedNews()) {

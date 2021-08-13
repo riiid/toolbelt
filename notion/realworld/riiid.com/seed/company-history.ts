@@ -1,5 +1,5 @@
 import firebaseData from "./legacy-firebase-data.ts";
-import { CompanyHistoryItem } from "../index.ts";
+import { CompanyHistoryItem } from "../schema/index.ts";
 
 if (import.meta.main) {
   for (const item of iterCompanyHistory()) {
