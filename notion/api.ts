@@ -29,6 +29,7 @@ export async function createPage(
       properties,
       children,
     }),
-  }).then((response) => response.json());
-  return res;
+  });
+  if (res.status >= 400) throw await res.json();
+  return await res.json();
 }

@@ -22,7 +22,7 @@ const toPropertyTable: {
   },
   "rich_text": (value) => {
     const content = value.toString();
-    return { title: [{ text: { content } }] };
+    return { rich_text: [{ text: { content } }] };
   },
   "select": (value, fieldSchema) => {
     const names = fieldSchema.select.options.map(({ name }) => name);
