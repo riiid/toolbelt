@@ -42,6 +42,41 @@ const toPropertyTable: {
   },
 };
 
+export function fromProperties(schema: PropertySchema, properties: any): any {
+  const result: any = {};
+  for (const [key, value] of Object.entries(properties)) {
+    const fieldSchema = schema[key];
+    if (!fieldSchema) continue;
+    result[key] = fromPropertyTable[fieldSchema.type](
+      value,
+      fieldSchema as any,
+    );
+  }
+  return result;
+}
+const fromPropertyTable: {
+  [type in FieldSchema["type"]]: (
+    property: any,
+    fieldSchema: Extract<FieldSchema, { type: type }>,
+  ) => any;
+} = {
+  "title": (property) => {
+    return property.title.map((item: any) => item.text.content).join("");
+  },
+  "rich_text": (property) => {
+    return property.rich_text.map((item: any) => item.text.content).join("");
+  },
+  "select": (property) => {
+    return property.select.name;
+  },
+  "date": (property) => {
+    return property.date.start;
+  },
+  "url": (property) => {
+    return property.url;
+  },
+};
+
 export interface PropertySchema {
   [name: string]: FieldSchema;
 }
