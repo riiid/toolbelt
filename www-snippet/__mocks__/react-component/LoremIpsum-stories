@@ -1,0 +1,36 @@
+import React from "react";
+import { Story } from "@storybook/react";
+import LoremIpsum, { LoremIpsumProps } from ".";
+
+export const Gallery: Story = () => {
+  return (
+    <LoremIpsum></LoremIpsum>
+  );
+};
+
+export const Template: Story<LoremIpsumProps> = (props) => {
+  return <LoremIpsum {...props} />;
+};
+
+Template.args = {
+  children: "Lorem Ipsum",
+};
+
+export default {
+  title: "Components/LoremIpsum",
+  component: LoremIpsum,
+  parameters: {
+    backgrounds: {
+      default: "dark",
+    },
+    layout: "fullscreen",
+    viewport: {
+      defaultViewport: "galaxys5",
+    },
+  },
+  decorators: [
+    (Story: Story) => (
+      <Story />
+    ),
+  ],
+};
