@@ -21,7 +21,9 @@ export const createFile = async (
 
   await createDirectoryIfNotExist(targetPath);
 
-  const file = await Deno.create((`${targetPath}/${fileName}`));
+  console.log(`${targetPath}/${fileName}`);
+
+  const file = await Deno.create(`${targetPath}/${fileName}`);
 
   const encoder = new TextEncoder();
   const content = encoder.encode(fileContent);

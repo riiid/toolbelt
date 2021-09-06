@@ -50,7 +50,7 @@ Deno.test(
   `should return correct react component re-export.`,
   async () => {
     assertEquals(
-      createReactComponentReExportContent("", {}),
+      createReactComponentReExportContent("LoremIpsum", {}),
       await readMockFile("react-component/index_ts"),
     );
   },

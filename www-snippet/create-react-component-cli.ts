@@ -26,23 +26,23 @@ example.
         console.log(options, dir, name);
         if (!dir || !name) throw Error("invalid arguments");
         await createFile(
-          dir,
-          `${name}/${name}.tsx`,
+          `${dir}/${name}`,
+          `${name}.tsx`,
           createReactComponentContent(name, options),
         );
         await createFile(
-          dir,
-          `${name}/${name}.stories.tsx`,
+          `${dir}/${name}`,
+          `${name}.stories.tsx`,
           createReactComponentTestingContent(name, options),
         );
         await createFile(
-          dir,
-          `${name}/${name}.spec.tsx`,
+          `${dir}/${name}`,
+          `${name}.spec.tsx`,
           createReactComponentTestingContent(name, options),
         );
         await createFile(
-          dir,
-          `${name}/index.ts`,
+          `${dir}/${name}`,
+          `index.ts`,
           createReactComponentReExportContent(name, options),
         );
       },

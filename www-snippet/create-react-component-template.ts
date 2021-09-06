@@ -19,25 +19,6 @@ export default memo(${name});
   }
 
   return `import React, { forwardRef, memo } from "react";
-type TypeRef = any;
-
-export interface ${name}Props {}
-
-const ${name} = forwardRef<TypeRef, ${name}Props>(({}, ref) => {
-  return <>${name}</>;
-});
-
-export default memo(${name});
-
-${name}.displayName = "${name}";
-`;
-};
-
-export const createReactComponentStoriesContent = (
-  name: string,
-  option: ReactComponentOption,
-) => {
-  return `import React, { forwardRef, memo } from "react";
 
 type RefElement = HTMLDivElement;
 type RefElementProps = React.HTMLAttributes<HTMLDivElement>;
@@ -51,6 +32,49 @@ const ${name} = forwardRef<RefElement, ${name}Props>((props, ref) => {
 export default memo(${name});
 
 ${name}.displayName = "${name}";
+`;
+};
+
+export const createReactComponentStoriesContent = (
+  name: string,
+  option: ReactComponentOption,
+) => {
+  return `import React from "react";
+import { Story } from "@storybook/react";
+import ${name}, { ${name}Props } from ".";
+
+export const Gallery: Story = () => {
+  return (
+    <${name}></${name}>
+  );
+};
+
+export const Template: Story<${name}Props> = (props) => {
+  return <${name} {...props} />;
+};
+
+Template.args = {
+  children: "Lorem Ipsum",
+};
+
+export default {
+  title: "Components/${name}",
+  component: ${name},
+  parameters: {
+    backgrounds: {
+      default: "dark",
+    },
+    layout: "fullscreen",
+    viewport: {
+      defaultViewport: "galaxys5",
+    },
+  },
+  decorators: [
+    (Story: Story) => (
+      <Story />
+    ),
+  ],
+};
 `;
 };
 
@@ -76,7 +100,7 @@ export const createReactComponentReExportContent = (
   name: string,
   option: ReactComponentOption,
 ) => {
-  return `export { default } from './LoremIpsum';
-export * from './LoremIpsum';
+  return `export { default } from "./${name}";
+export * from "./${name}";
 `;
 };
