@@ -2,6 +2,7 @@ import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
 import {
   createReactComponentContent,
   createReactComponentReExportContent,
+  createReactComponentStoriesContent,
   createReactComponentTestingContent,
   ReactComponentOption,
 } from "./create-react-component-template.ts";
@@ -23,7 +24,6 @@ example.
     .option("-F, --forwardRef", "generate forwardRef component")
     .action(
       async (options: ReactComponentOption, dir: string, name: string) => {
-        console.log(options, dir, name);
         if (!dir || !name) throw Error("invalid arguments");
         await createFile(
           `${dir}/${name}`,
@@ -33,7 +33,7 @@ example.
         await createFile(
           `${dir}/${name}`,
           `${name}.stories.tsx`,
-          createReactComponentTestingContent(name, options),
+          createReactComponentStoriesContent(name, options),
         );
         await createFile(
           `${dir}/${name}`,
