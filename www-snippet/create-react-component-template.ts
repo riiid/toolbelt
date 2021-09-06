@@ -37,42 +37,20 @@ export const createReactComponentStoriesContent = (
   name: string,
   option: ReactComponentOption,
 ) => {
-  return `import React from "react";
-import { Story } from "@storybook/react";
-import ${name}, { ${name}Props } from ".";
+  return `import React, { forwardRef, memo } from "react";
 
-export const Gallery: Story = () => {
-  return (
-    <${name}></${name}>
-  );
-};
+type RefElement = HTMLDivElement;
+type RefElementProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const Template: Story<${name}Props> = (props) => {
-  return <${name} {...props} />;
-};
+export interface ${name}Props extends RefElementProps {}
 
-Template.args = {
-  children: "Lorem Ipsum",
-};
+const ${name} = forwardRef<RefElement, ${name}Props>((props, ref) => {
+  return <div ref={ref} {...props}>Lorem Ipsum</div>;
+});
 
-export default {
-  title: "Components/${name}",
-  component: ${name},
-  parameters: {
-    backgrounds: {
-      default: "dark",
-    },
-    layout: "fullscreen",
-    viewport: {
-      defaultViewport: "galaxys5",
-    },
-  },
-  decorators: [
-    (Story: Story) => (
-      <Story />
-    ),
-  ],
-};
+export default memo(${name});
+
+${name}.displayName = "${name}";
 `;
 };
 

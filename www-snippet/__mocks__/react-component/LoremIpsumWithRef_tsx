@@ -1,10 +1,12 @@
 import React, { forwardRef, memo } from "react";
-type TypeRef = any;
 
-export interface LoremIpsumProps {}
+type RefElement = HTMLDivElement;
+type RefElementProps = React.HTMLAttributes<HTMLDivElement>;
 
-const LoremIpsum = forwardRef<TypeRef, LoremIpsumProps>(({}, ref) => {
-  return <>LoremIpsum</>;
+export interface LoremIpsumProps extends RefElementProps {}
+
+const LoremIpsum = forwardRef<RefElement, LoremIpsumProps>((props, ref) => {
+  return <div ref={ref} {...props}>Lorem Ipsum</div>;
 });
 
 export default memo(LoremIpsum);
