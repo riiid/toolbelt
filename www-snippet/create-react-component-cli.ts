@@ -15,8 +15,9 @@ if (import.meta.main) {
 react component snippet.
 includes component, test, storybook, re-export.
 
-example:
-  - riiid-create-react-component src/components HelloWorld
+example.
+
+- toolbelt riiid-create-react-component src/components HelloWorld
     `)
     .arguments("<dir:string> <name:string>")
     .option("-F, --forwardRef", "generate forwardRef component")
