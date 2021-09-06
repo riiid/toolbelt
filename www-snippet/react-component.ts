@@ -1,4 +1,4 @@
-interface ReactComponentOption {
+export interface ReactComponentOption {
   forwardRef?: boolean;
 }
 
@@ -7,14 +7,15 @@ export const createReactComponentContent = (
   option: ReactComponentOption,
 ) => {
   if (!option.forwardRef) {
-    return `import React, { PropsWithChildren, memo } from "react";
+    return `import React, { memo, PropsWithChildren } from "react";
 export interface ${name}Props {}
 
 const ${name} = (({}: PropsWithChildren<${name}Props>) => {
   return <>${name}</>;
 });
 
-export default memo(${name});`;
+export default memo(${name});
+`;
   }
 
   return `import React, { forwardRef, memo } from "react";
@@ -28,7 +29,8 @@ const ${name} = forwardRef<TypeRef, ${name}Props>(({}, ref) => {
 
 export default memo(${name});
 
-${name}.displayName = "${name}";`;
+${name}.displayName = "${name}";
+`;
 };
 
 export const createReactComponentStoriesContent = (
@@ -70,7 +72,8 @@ export default {
       <Story />
     ),
   ],
-};`;
+};
+`;
 };
 
 export const createReactComponentTestingContent = (
@@ -87,5 +90,6 @@ describe("<${name} />", () => {
     const { queryByText } = render(<${name}>{content}</${name}>);
     expect(queryByText("Lorem Ipsum")).toBeInTheDocument();
   });
-});`;
+});
+`;
 };

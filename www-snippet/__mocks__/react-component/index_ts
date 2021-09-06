@@ -1,0 +1,2 @@
+export { default } from './LoremIpsum';
+export * from './LoremIpsum';
