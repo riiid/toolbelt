@@ -93,3 +93,12 @@ describe("<${name} />", () => {
 });
 `;
 };
+
+export const createReactComponentReExportContent = (
+  name: string,
+  option: ReactComponentOption,
+) => {
+  return `export { default } from './LoremIpsum';
+export * from './LoremIpsum';
+`;
+};

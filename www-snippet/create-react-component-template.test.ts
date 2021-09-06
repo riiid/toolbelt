@@ -1,8 +1,9 @@
 import {
   createReactComponentContent,
+  createReactComponentReExportContent,
   createReactComponentStoriesContent,
   createReactComponentTestingContent,
-} from "./react-component.ts";
+} from "./create-react-component-template.ts";
 import { assertEquals } from "https://deno.land/std@0.106.0/testing/asserts.ts";
 import { readMockFile } from "./__mocks__/readMockFile.ts";
 
@@ -41,6 +42,16 @@ Deno.test(
     assertEquals(
       createReactComponentStoriesContent("LoremIpsum", {}),
       await readMockFile("react-component/LoremIpsum_stories_tsx"),
+    );
+  },
+);
+
+Deno.test(
+  `should return correct react component re-export.`,
+  async () => {
+    assertEquals(
+      createReactComponentReExportContent("", {}),
+      await readMockFile("react-component/index_ts"),
     );
   },
 );
