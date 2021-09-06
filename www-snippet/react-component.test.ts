@@ -1,48 +1,37 @@
 import { createReactComponentContent } from "./react-component.ts";
 import { assertEquals } from "https://deno.land/std@0.106.0/testing/asserts.ts";
+import * as log from "https://deno.land/std@0.106.0/log/mod.ts";
+import * as path from "https://deno.land/std@0.106.0/path/mod.ts";
+
+const readMockFile = async (
+  subPath: "react-component/LoremIpsum" | "react-component/LoremIpsumWithRef",
+) => {
+  const url = new URL(import.meta.url);
+  const pathname = decodeURI(url.pathname);
+
+  return await Deno.readTextFile(
+    path.resolve(
+      pathname,
+      `../__mocks__/${subPath}`,
+    ),
+  );
+};
 
 Deno.test(
-  `createReactComponentContent("LoremIpsum", {
-  forwardRef: false,
-}`,
-  () => {
+  `should return correct react component.`,
+  async () => {
     assertEquals(
       createReactComponentContent("LoremIpsum", {
         forwardRef: false,
       }),
-      `import React, { PropsWithChildren, memo } from "react";
-export interface LoremIpsumProps {}
-
-const LoremIpsum = (({}: PropsWithChildren<LoremIpsumProps>) => {
-  return <>LoremIpsum</>;
-});
-
-export default memo(LoremIpsum);`,
+      await readMockFile("react-component/LoremIpsum"),
     );
-  },
-);
 
-Deno.test(
-  `createReactComponentContent("LoremIpsum", {
-  forwardRef: true,
-})`,
-  () => {
     assertEquals(
       createReactComponentContent("LoremIpsum", {
         forwardRef: true,
       }),
-      `import React, { forwardRef, memo } from "react";
-type TypeRef = any;
-
-export interface LoremIpsumProps {}
-
-const LoremIpsum = forwardRef<TypeRef, LoremIpsumProps>(({}, ref) => {
-  return <>LoremIpsum</>;
-});
-
-export default memo(LoremIpsum);
-
-LoremIpsum.displayName = "LoremIpsum";`,
+      await readMockFile("react-component/LoremIpsumWithRef"),
     );
   },
 );

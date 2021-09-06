@@ -1,0 +1,8 @@
+import React, { memo, PropsWithChildren } from "react";
+export interface LoremIpsumProps {}
+
+const LoremIpsum = (({}: PropsWithChildren<LoremIpsumProps>) => {
+  return <>LoremIpsum</>;
+});
+
+export default memo(LoremIpsum);
