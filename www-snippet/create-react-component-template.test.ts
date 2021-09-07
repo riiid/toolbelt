@@ -1,29 +1,11 @@
 import {
   createReactComponentContent,
+  createReactComponentReExportContent,
   createReactComponentStoriesContent,
   createReactComponentTestingContent,
-} from "./react-component.ts";
+} from "./create-react-component-template.ts";
 import { assertEquals } from "https://deno.land/std@0.106.0/testing/asserts.ts";
-import * as log from "https://deno.land/std@0.106.0/log/mod.ts";
-import * as path from "https://deno.land/std@0.106.0/path/mod.ts";
-
-const readMockFile = async (
-  subPath:
-    | "react-component/LoremIpsum"
-    | "react-component/LoremIpsumWithRef"
-    | "react-component/LoremIpsum-stories"
-    | "react-component/LoremIpsum-testing",
-) => {
-  const url = new URL(import.meta.url);
-  const pathname = decodeURI(url.pathname);
-
-  return await Deno.readTextFile(
-    path.resolve(
-      pathname,
-      `../__mocks__/${subPath}`,
-    ),
-  );
-};
+import { readMockFile } from "./__mocks__/readMockFile.ts";
 
 Deno.test(
   `should return correct react component.`,
@@ -32,14 +14,14 @@ Deno.test(
       createReactComponentContent("LoremIpsum", {
         forwardRef: false,
       }),
-      await readMockFile("react-component/LoremIpsum"),
+      await readMockFile("react-component/LoremIpsum_tsx"),
     );
 
     assertEquals(
       createReactComponentContent("LoremIpsum", {
         forwardRef: true,
       }),
-      await readMockFile("react-component/LoremIpsumWithRef"),
+      await readMockFile("react-component/LoremIpsumWithRef_tsx"),
     );
   },
 );
@@ -49,7 +31,7 @@ Deno.test(
   async () => {
     assertEquals(
       createReactComponentTestingContent("LoremIpsum", {}),
-      await readMockFile("react-component/LoremIpsum-testing"),
+      await readMockFile("react-component/LoremIpsum_spec_tsx"),
     );
   },
 );
@@ -59,7 +41,17 @@ Deno.test(
   async () => {
     assertEquals(
       createReactComponentStoriesContent("LoremIpsum", {}),
-      await readMockFile("react-component/LoremIpsum-stories"),
+      await readMockFile("react-component/LoremIpsum_stories_tsx"),
+    );
+  },
+);
+
+Deno.test(
+  `should return correct react component re-export.`,
+  async () => {
+    assertEquals(
+      createReactComponentReExportContent("LoremIpsum", {}),
+      await readMockFile("react-component/index_ts"),
     );
   },
 );

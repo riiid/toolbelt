@@ -1,4 +1,4 @@
-interface ReactComponentOption {
+export interface ReactComponentOption {
   forwardRef?: boolean;
 }
 
@@ -7,28 +7,32 @@ export const createReactComponentContent = (
   option: ReactComponentOption,
 ) => {
   if (!option.forwardRef) {
-    return `import React, { PropsWithChildren, memo } from "react";
+    return `import React, { memo, PropsWithChildren } from "react";
 export interface ${name}Props {}
 
 const ${name} = (({}: PropsWithChildren<${name}Props>) => {
   return <>${name}</>;
 });
 
-export default memo(${name});`;
+export default memo(${name});
+`;
   }
 
   return `import React, { forwardRef, memo } from "react";
-type TypeRef = any;
 
-export interface ${name}Props {}
+type RefElement = HTMLDivElement;
+type RefElementProps = React.HTMLAttributes<HTMLDivElement>;
 
-const ${name} = forwardRef<TypeRef, ${name}Props>(({}, ref) => {
-  return <>${name}</>;
+export interface ${name}Props extends RefElementProps {}
+
+const ${name} = forwardRef<RefElement, ${name}Props>((props, ref) => {
+  return <div ref={ref} {...props}>Lorem Ipsum</div>;
 });
 
 export default memo(${name});
 
-${name}.displayName = "${name}";`;
+${name}.displayName = "${name}";
+`;
 };
 
 export const createReactComponentStoriesContent = (
@@ -70,7 +74,8 @@ export default {
       <Story />
     ),
   ],
-};`;
+};
+`;
 };
 
 export const createReactComponentTestingContent = (
@@ -87,5 +92,15 @@ describe("<${name} />", () => {
     const { queryByText } = render(<${name}>{content}</${name}>);
     expect(queryByText("Lorem Ipsum")).toBeInTheDocument();
   });
-});`;
+});
+`;
+};
+
+export const createReactComponentReExportContent = (
+  name: string,
+  option: ReactComponentOption,
+) => {
+  return `export { default } from "./${name}";
+export * from "./${name}";
+`;
 };
