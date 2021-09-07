@@ -18,7 +18,7 @@ includes component, test, storybook, re-export.
 
 example.
 
-- toolbelt riiid-create-react-component src/components HelloWorld
+- riiid-create-react-component src/components HelloWorld
     `)
     .arguments("<dir:string> <name:string>")
     .option("-F, --forwardRef", "generate forwardRef component")
