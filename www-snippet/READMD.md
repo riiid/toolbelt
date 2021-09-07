@@ -16,7 +16,7 @@ total code snippets of www chapter.
 
     example.
 
-    - toolbelt riiid-create-react-component src/components HelloWorld
+    - riiid-create-react-component src/components HelloWorld
 
 
   Options:
