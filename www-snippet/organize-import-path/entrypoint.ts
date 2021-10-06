@@ -1,5 +1,4 @@
 import { globFiles } from "../utils/globFiles.ts";
-import { readFile } from "../utils/readFile.ts";
 import { appendTextInFile } from "../utils/appendTextInFile.ts";
 import { removeTextInFile } from "../utils/removeTextInFile.ts";
 import { getImportRaw } from "./getImportRaw.ts";
@@ -33,7 +32,7 @@ import { Button, ButtonProps } from '@riiid/design-system-react'; // after
       async (options: unknown, pkg: string) => {
         for (const file of await globFiles(`src/**/*`)) {
           const nodes: Node[] = [];
-          const content = await readFile(file);
+          const content = await Deno.readTextFile(file);
           for (const importRaw of getImportRaw(content)) {
             nodes.push(...parseImportRaw(importRaw));
           }
