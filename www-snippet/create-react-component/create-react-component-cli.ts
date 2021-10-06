@@ -6,7 +6,7 @@ import {
   createReactComponentTestingContent,
   ReactComponentOption,
 } from "./create-react-component-template.ts";
-import { createFile } from "./utils/createFile.ts";
+import { createFile } from "../utils/createFile.ts";
 
 if (import.meta.main) {
   const command = new Command();
