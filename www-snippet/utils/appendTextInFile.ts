@@ -1,9 +1,6 @@
-import { readFile } from "./readFile.ts";
-import { writeFile } from "./writeFile.ts";
-
 export async function appendTextInFile(path: string, toAppend: string) {
-  const text = await readFile(path);
-  await writeFile(
+  const text = await Deno.readTextFile(path);
+  await Deno.writeTextFile(
     path,
     `${toAppend}
 ${text}`,
