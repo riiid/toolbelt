@@ -12,12 +12,20 @@ import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
 if (import.meta.main) {
   const command = new Command();
   command
-    .name("riiid-import-component-from-root")
+    .name("organize-import-path")
     .description(`
-this tool changes files about relative imports way to absolute imports way
+this tool organize import path using given path below src folder.
+
+1. it remove all subpath about given path.
+2. it change every imports to named imports from given path
+
+for example.
+\`\`\`sh
+organize-import-path @riiid/design-system-react
+\`\`\`
 \`\`\`typescript
 import Button, {ButtonProps} from '@riiid/design-system-react/lib/components/Button'; // before
-import { Button } from '@riiid/design-system-react'; // after
+import { Button, ButtonProps } from '@riiid/design-system-react'; // after
 \`\`\`
 `)
     .arguments("<pkg:string>")
