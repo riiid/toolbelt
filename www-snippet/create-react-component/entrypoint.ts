@@ -6,19 +6,19 @@ import {
   createReactComponentTestingContent,
   ReactComponentOption,
 } from "./create-react-component-template.ts";
-import { createFile } from "./utils/createFile.ts";
+import { createFile } from "../utils/createFile.ts";
 
 if (import.meta.main) {
   const command = new Command();
   command
-    .name("riiid-create-react-component")
+    .name("create-react-component")
     .description(`
 react component snippet.
 includes component, test, storybook, re-export.
 
 example.
 
-- riiid-create-react-component src/components HelloWorld
+- create-react-component src/components HelloWorld
     `)
     .arguments("<dir:string> <name:string>")
     .option("-F, --forwardRef", "generate forwardRef component")
