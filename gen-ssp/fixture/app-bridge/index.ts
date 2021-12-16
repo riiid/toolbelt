@@ -58,7 +58,9 @@ export const requestRiiidBrowserService: RequestFn = async (id, method, message)
     const response = await browserServiceMethodTable[method](message);
     appBridge.respondBrowserService(id, response);
   } catch (error) {
-    appBridge.respondErrorBrowserService(id, error?.message ?? 'error');
+    if (error instanceof Error) {
+      appBridge.respondErrorBrowserService(id, error.message ?? 'error');
+    }
   }
 };
 
