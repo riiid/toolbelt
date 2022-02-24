@@ -1,9 +1,9 @@
-import { emptyDir, walk } from "https://deno.land/std@0.95.0/fs/mod.ts";
+import { emptyDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
 import {
   dirname,
   fromFileUrl,
   join,
-} from "https://deno.land/std@0.95.0/path/mod.ts";
+} from "https://deno.land/std@0.126.0/path/mod.ts";
 import { Command, EnumType } from "https://deno.land/x/cliffy@v0.20.1/mod.ts";
 
 export const pollapoPath = ".pollapo";

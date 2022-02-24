@@ -1,6 +1,6 @@
 import { globFiles } from "../utils/globFiles.ts";
 import { replaceTextInFile } from "../utils/replaceTextInFile.ts";
-import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
+import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 
 /**
  * you can test this script in project root folder.

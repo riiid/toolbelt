@@ -1,9 +1,9 @@
-import { bold } from "https://deno.land/std@0.105.0/fmt/colors.ts";
+import { bold } from "https://deno.land/std@0.126.0/fmt/colors.ts";
 import {
   print,
   println,
-} from "https://deno.land/x/pbkit@v0.0.14/cli/pollapo/misc/stdio.ts";
-import { open as openBrowser } from "https://deno.land/x/pbkit@v0.0.14/cli/pollapo/misc/browser.ts";
+} from "https://deno.land/x/pbkit@v0.0.38/cli/pollapo/misc/stdio.ts";
+import { open as openBrowser } from "https://deno.land/x/pbkit@v0.0.38/cli/pollapo/misc/browser.ts";
 
 export default async function (title: string, url: string) {
   await print(

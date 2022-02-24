@@ -1,4 +1,4 @@
-import * as path from "https://deno.land/std@0.95.0/path/mod.ts";
+import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
 import { Schema } from "https://deno.land/x/ubershape@v0.0.12/schema.ts";
 import { schema2ts } from "https://deno.land/x/ubershape@v0.0.12/codegen/ts.ts";
 import { getReadFunction } from "https://deno.land/x/ubershape@v0.0.12/io/read-schema.ts";

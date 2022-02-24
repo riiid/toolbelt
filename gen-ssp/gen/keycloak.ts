@@ -1,5 +1,5 @@
-import { ensureDir } from "https://deno.land/std@0.95.0/fs/mod.ts";
-import * as path from "https://deno.land/std@0.95.0/path/mod.ts";
+import { ensureDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
 import { globFiles } from "../misc/fs.ts";
 import { generateKeycloakUtil, getClientRoles } from "../keycloak.ts";
 import { pollapoPath, sspOutPath } from "./index.ts";
