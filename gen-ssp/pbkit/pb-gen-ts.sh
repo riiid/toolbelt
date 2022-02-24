@@ -1,19 +1,19 @@
 ENTRY_PATH=.pollapo
 OUT_DIR=src/generated/ssp
-EXT_IN_IMPORT=' '
+EXT_IN_IMPORT=" "
 INDEX_FILENAME=index
 
-if ! command -v pb-gen-ts &> /dev/null
+if ! command -v pb &> /dev/null
 then
-  alias pb-gen-ts="yarn pb-gen-ts"
-  alias pb-gen-ts="yarn pb-gen-ts"
+  pbgents="yarn pb-gen-ts"
+  pbgents="yarn pb-gen-ts"
 else
-  alias pb-gen-ts="pb gen ts"
-  alias pb-gen-ts="pb gen ts"
+  pbgents="pb gen ts"
+  pbgents="pb gen ts"
 fi
 
-pb-gen-ts \
+$pbgents \
 --entry-path $ENTRY_PATH \
 -o $OUT_DIR \
---ext-in-import $EXT_IN_IMPORT \
+--ext-in-import "$EXT_IN_IMPORT" \
 --index-filename $INDEX_FILENAME \
