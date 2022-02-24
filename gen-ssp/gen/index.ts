@@ -18,7 +18,7 @@ export const generators = [
   "rrtv2",
   "urichk",
   "fixture2",
-  "pb",
+  "pbkit",
 ] as const;
 const generatorEnum = new EnumType(generators);
 

@@ -4,5 +4,5 @@ await runPreset([
   'urichk',
   'rrtv2',
   'fixture2',
-  'pb',
+  'pbkit',
 ])
