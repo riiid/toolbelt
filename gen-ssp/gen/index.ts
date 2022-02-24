@@ -59,15 +59,7 @@ if (import.meta.main) {
     .arguments<[Preset]>("<preset:preset>")
     .action(async (_, preset) => {
       const __dirname = dirname(fromFileUrl(import.meta.url));
-      await Deno.run({
-        cmd: [
-          "deno",
-          "run",
-          "-A",
-          "--unstable",
-          join(__dirname, "preset", `${preset}.ts`),
-        ],
-      }).status();
+      await import(join(__dirname, "preset", `./${preset}.ts`));
     });
   const command = new Command();
   command
