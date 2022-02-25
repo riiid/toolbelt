@@ -5,8 +5,8 @@ INDEX_FILENAME=index
 
 if ! command -v pb &> /dev/null
 then
-  pbgents="yarn pb-gen-ts"
-  pbgents="yarn pb-gen-ts"
+  pbgents="pb-gen-ts"
+  pbgents="pb-gen-ts"
 else
   pbgents="pb gen ts"
   pbgents="pb gen ts"
