@@ -6,7 +6,7 @@ import { parseImportRaw } from "./parseImportRaw.ts";
 import { Node } from "./types.ts";
 import { matchNode } from "./matchNode.ts";
 import { serializeImportRaw } from "./serializeImportRaw.ts";
-import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
+import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 
 if (import.meta.main) {
   const command = new Command();

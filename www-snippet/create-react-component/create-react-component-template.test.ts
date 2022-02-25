@@ -4,7 +4,7 @@ import {
   createReactComponentStoriesContent,
   createReactComponentTestingContent,
 } from "./create-react-component-template.ts";
-import { assertEquals } from "https://deno.land/std@0.106.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.126.0/testing/asserts.ts";
 import { readMockFile } from "./__mocks__/readMockFile.ts";
 
 Deno.test(

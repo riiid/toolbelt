@@ -1,5 +1,5 @@
-import { serve } from "https://deno.land/std@0.105.0/http/server.ts";
-import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
+import { serve } from "https://deno.land/std@0.126.0/http/server.ts";
+import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 import openBrowser from "../misc/open-browser.ts";
 
 export const port = 61118;

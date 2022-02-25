@@ -1,5 +1,5 @@
-import { walk } from "https://deno.land/std@0.95.0/fs/walk.ts";
-import * as path from "https://deno.land/std@0.95.0/path/mod.ts";
+import { walk } from "https://deno.land/std@0.126.0/fs/walk.ts";
+import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
 import { parse } from "https://deno.land/x/urichk@v0.0.3/index.ts";
 import type { Urichk } from "https://deno.land/x/urichk@v0.0.3/ast.ts";
 

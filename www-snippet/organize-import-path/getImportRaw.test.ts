@@ -1,8 +1,8 @@
-import { assertEquals } from "https://deno.land/std@0.106.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.126.0/testing/asserts.ts";
 import { getImportRaw } from "./getImportRaw.ts";
 
 const typescriptContent =
-  `import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";
+  `import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 
 import {
   createReactComponentContent,
@@ -20,7 +20,7 @@ Deno.test(`getImportRaw`, () => {
 
   assertEquals(
     code.next().value,
-    `import { Command } from "https://deno.land/x/cliffy@v0.19.1/command/mod.ts";`,
+    `import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";`,
   );
 
   assertEquals(
