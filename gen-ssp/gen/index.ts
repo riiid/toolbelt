@@ -1,3 +1,12 @@
+import genFixture from "./fixture.ts";
+import genKeycloak from "./keycloak.ts";
+import genPbjs from "./pbjs.ts";
+import genPbService from "./pb-service.ts";
+import genRrtv2 from "./rrtv2.ts";
+import genUrichk from "./urichk.ts";
+import genFixture2 from "./fixture2.ts";
+import genPbkit from "./pbkit.ts";
+
 import { emptyDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
 import {
   dirname,
@@ -14,18 +23,18 @@ export interface GenOptions {
   outDir: string;
 }
 
-export type Generator = (typeof generators)[number];
-export const generators = [
-  "fixture",
-  "keycloak",
-  "pbjs",
-  "pb-service",
-  "rrtv2",
-  "urichk",
-  "fixture2",
-  "pbkit",
-] as const;
-const generatorEnum = new EnumType(generators);
+export type Generator = keyof typeof generatorMap;
+export const generatorMap = {
+  fixture: genFixture,
+  keycloak: genKeycloak,
+  pbjs: genPbjs,
+  pbService: genPbService,
+  rrtv2: genRrtv2,
+  urichk: genUrichk,
+  fixture2: genFixture2,
+  pbkit: genPbkit,
+};
+const generatorEnum = new EnumType(Object.keys(generatorMap) as Generator[]);
 
 export type Preset = (typeof presets)[number];
 export const presets = [
@@ -43,12 +52,12 @@ export interface RunPresetOptions extends GenOptions {
 }
 export async function runPreset({
   preset,
-  outDir,
   clean = true,
+  ...genOptions
 }: RunPresetOptions): Promise<void> {
-  if (clean) await emptyDir(outDir);
+  if (clean) await emptyDir(genOptions.outDir);
   for (const generator of preset) {
-    await (await import(`./${generator}.ts`)).default();
+    generatorMap[generator](genOptions);
   }
 }
 
