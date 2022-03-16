@@ -8,11 +8,6 @@ import genFixture2 from "./fixture2.ts";
 import genPbkit from "./pbkit.ts";
 
 import { emptyDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
-import {
-  dirname,
-  fromFileUrl,
-  join,
-} from "https://deno.land/std@0.126.0/path/mod.ts";
 import { Command, EnumType } from "https://deno.land/x/cliffy@v0.20.1/mod.ts";
 
 const defaultPollapoDir = ".pollapo";
@@ -28,7 +23,7 @@ export const generatorMap = {
   fixture: genFixture,
   keycloak: genKeycloak,
   pbjs: genPbjs,
-  pbService: genPbService,
+  "pb-service": genPbService,
   rrtv2: genRrtv2,
   urichk: genUrichk,
   fixture2: genFixture2,
@@ -36,15 +31,51 @@ export const generatorMap = {
 };
 const generatorEnum = new EnumType(Object.keys(generatorMap) as Generator[]);
 
-export type Preset = (typeof presets)[number];
-export const presets = [
-  "admin",
-  "all",
-  "library",
-  "product",
-  "product2",
-] as const;
-const presetEnum = new EnumType(presets);
+export type Preset =
+  | "admin"
+  | "all"
+  | "admin2"
+  | "library"
+  | "product"
+  | "product2";
+export const presetMap: { [preset in Preset]: Generator[] } = {
+  admin: [
+    "keycloak",
+    "urichk",
+    "fixture",
+    "pbjs",
+    "pb-service",
+  ],
+  all: [
+    "keycloak",
+    "urichk",
+    "rrtv2",
+    "fixture",
+    "pbjs",
+    "pb-service",
+  ],
+  admin2: [
+    "keycloak",
+    "pbkit",
+  ],
+  library: [
+    "pbjs",
+  ],
+  product: [
+    "urichk",
+    "rrtv2",
+    "fixture",
+    "pbjs",
+    "pb-service",
+  ],
+  product2: [
+    "urichk",
+    "rrtv2",
+    "fixture2",
+    "pbkit",
+  ],
+};
+const presetEnum = new EnumType(Object.keys(presetMap) as Preset[]);
 
 export interface RunPresetOptions extends GenOptions {
   preset: Generator[];
@@ -106,8 +137,10 @@ if (import.meta.main) {
     )
     .arguments<[Preset]>("<preset:preset>")
     .action(async (option: GenOptions, preset) => {
-      const __dirname = dirname(fromFileUrl(import.meta.url));
-      await import(join(__dirname, "preset", `./${preset}.ts`));
+      await runPreset({
+        preset: presetMap[preset],
+        ...option,
+      });
     });
   const command = new Command();
   command
