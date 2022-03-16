@@ -1,16 +1,18 @@
+import { GenOptions } from "./index.ts";
 import { ensureDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
 import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
 import { compile as compileNextjsNavigationHook } from "https://deno.land/x/urichk@v0.0.3/compile/nextjs-navigation-hook.ts";
 import { compile as compileNextjsSearchParamsHook } from "https://deno.land/x/urichk@v0.0.3/compile/nextjs-search-params-hook.ts";
 import { kebabToPascal } from "../misc/case.ts";
 import { iterWebUrichkFiles } from "../urichk.ts";
-import { pollapoPath, sspOutPath } from "./index.ts";
 
-export default async function gen(): Promise<void> {
+export default async function gen(
+  { pollapoDir, outDir }: GenOptions,
+): Promise<void> {
   console.log("Generating urichk utils...");
-  const outPath = path.resolve(sspOutPath, "next");
+  const outPath = path.resolve(outDir, "next");
   await ensureDir(outPath);
-  for await (const { schema, name } of iterWebUrichkFiles(pollapoPath)) {
+  for await (const { schema, name } of iterWebUrichkFiles(pollapoDir)) {
     await Deno.writeTextFile(
       path.resolve(outPath, `useNavigate${kebabToPascal(name)}.ts`),
       compileNextjsNavigationHook(schema, { name }),

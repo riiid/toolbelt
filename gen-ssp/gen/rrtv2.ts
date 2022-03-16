@@ -1,15 +1,17 @@
+import { GenOptions } from "./index.ts";
 import { ensureDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
 import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
 import { globFiles } from "../misc/fs.ts";
 import { compile as compileUbershape } from "../ubershape.ts";
-import { pollapoPath, sspOutPath } from "./index.ts";
 
-export default async function gen(): Promise<void> {
+export default async function gen(
+  { pollapoDir, outDir }: GenOptions,
+): Promise<void> {
   console.log("Generating rrtv2 utils...");
-  const outPath = path.resolve(sspOutPath, "ubershape");
+  const outPath = path.resolve(outDir, "ubershape");
   await ensureDir(outPath);
   const rrtv2Path = path.resolve(
-    pollapoPath,
+    pollapoDir,
     "riiid/interface-content-model/rrt/v2",
   );
   const compileResults = compileUbershape(
