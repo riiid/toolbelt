@@ -110,7 +110,7 @@ if (import.meta.main) {
       { default: defaultPollapoDir },
     )
     .option(
-      "-o, --out-dir [outDir: string]",
+      "-O, --out-dir [outDir:string]",
       "path for codegen output",
       { default: defaultOutDir },
     )
@@ -131,7 +131,7 @@ if (import.meta.main) {
       { default: defaultPollapoDir },
     )
     .option(
-      "-o, --out-dir [outDir: string]",
+      "-O, --out-dir [outDir:string]",
       "path for codegen output",
       { default: defaultOutDir },
     )
