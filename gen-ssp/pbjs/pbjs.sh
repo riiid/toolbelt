@@ -1,9 +1,5 @@
 #!/bin/bash
-
-PROTO_PATH=.pollapo
 EVERY_PROTO_FILES=${1:-$(find $PROTO_PATH -iname "*.proto")}
-
-OUT_DIR=src/generated/ssp
 
 mkdir -p $OUT_DIR
 

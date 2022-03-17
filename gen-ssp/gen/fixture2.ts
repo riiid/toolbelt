@@ -1,7 +1,7 @@
+import { GenOptions } from "./index.ts";
 import { copyFixtures } from "../fixture2.ts";
-import { sspOutPath } from "./index.ts";
 
-export default async function gen(): Promise<void> {
+export default async function gen({ outDir }: GenOptions): Promise<void> {
   console.log("Copying app-bridge, client, server fixtures...");
-  await copyFixtures(sspOutPath);
+  await copyFixtures(outDir);
 }

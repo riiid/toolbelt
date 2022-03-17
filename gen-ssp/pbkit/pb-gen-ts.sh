@@ -1,5 +1,3 @@
-ENTRY_PATH=.pollapo
-OUT_DIR=src/generated/ssp
 EXT_IN_IMPORT=" "
 INDEX_FILENAME=index
 
