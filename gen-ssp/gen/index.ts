@@ -88,7 +88,7 @@ export async function runPreset({
 }: RunPresetOptions): Promise<void> {
   if (clean) await emptyDir(genOptions.outDir);
   for (const generator of preset) {
-    generatorMap[generator](genOptions);
+    await generatorMap[generator](genOptions);
   }
 }
 
