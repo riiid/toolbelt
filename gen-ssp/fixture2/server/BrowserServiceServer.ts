@@ -6,8 +6,6 @@ export function startBrowserServiceServer() {
   Object.assign(window, requestHandlers);
   window.removeEventListener('message', messageEventHandler);
   window.addEventListener('message', messageEventHandler);
-  // Notify parent that app-bridge is ready
-  window.parent.postMessage(['riiid:app-bridge:pong'], '*');
 }
 
 function messageEventHandler(e: MessageEvent<[keyof typeof requestHandlers, Parameters<RequestFn>]>) {
@@ -30,6 +28,11 @@ const handleBrowserServiceRequest: RequestFn = async (id, method, message) => {
   }
 };
 
+const handlePing: RequestFn = async () => {
+  window.parent.postMessage(['riiid:app-bridge:pong', window.location.href], '*')
+};
+
 const requestHandlers = {
   requestRiiidBrowserService: handleBrowserServiceRequest,
+  'riiid:app-bridge:ping': handlePing,
 };
