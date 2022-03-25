@@ -2,7 +2,7 @@ import {MobileAppBridge, browserServiceMethodTable} from '.';
 
 declare const window: any;
 
-const ping = (iframe: HTMLIFrameElement) => iframe.contentWindow?.postMessage(['riiid:app-bridge:ping'], '*');
+const ping = (iframe: HTMLIFrameElement) => iframe.contentWindow?.postMessage(['riiid:app-bridge:ping', []], '*');
 const pong = () => window.parent.postMessage(['riiid:app-bridge:pong', window.location.href], '*');
 
 // 부모 window에서 자식 iframe window의 appBridge가 준비되었는지 확인할 수단

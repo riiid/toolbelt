@@ -28,6 +28,11 @@ const handleBrowserServiceRequest: RequestFn = async (id, method, message) => {
   }
 };
 
+const handlePing = async () => {
+  window.parent.postMessage(['riiid:app-bridge:pong'], '*')
+};
+
 const requestHandlers = {
   requestRiiidBrowserService: handleBrowserServiceRequest,
+  'riiid:app-bridge:ping': handlePing,
 };
