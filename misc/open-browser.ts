@@ -1,4 +1,4 @@
-import { bold } from "https://deno.land/std@0.126.0/fmt/colors.ts";
+import { bold } from "https://deno.land/std@0.138.0/fmt/colors.ts";
 import {
   print,
   println,

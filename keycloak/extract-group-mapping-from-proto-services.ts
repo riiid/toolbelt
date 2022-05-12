@@ -1,5 +1,5 @@
-import { stringify } from "https://deno.land/std@0.126.0/encoding/yaml.ts";
-import { walk } from "https://deno.land/std@0.126.0/fs/walk.ts";
+import { stringify } from "https://deno.land/std@0.138.0/encoding/yaml.ts";
+import { walk } from "https://deno.land/std@0.138.0/fs/walk.ts";
 import { Command } from "https://deno.land/x/cliffy@v0.20.1/command/mod.ts";
 import * as ast from "https://deno.land/x/pbkit@v0.0.38/core/ast/index.ts";
 import { parse } from "https://deno.land/x/pbkit@v0.0.38/core/parser/proto.ts";

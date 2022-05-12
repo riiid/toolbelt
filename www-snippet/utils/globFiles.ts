@@ -1,4 +1,4 @@
-import { expandGlob } from "https://deno.land/std@0.126.0/fs/mod.ts";
+import { expandGlob } from "https://deno.land/std@0.138.0/fs/mod.ts";
 
 export async function globFiles(
   pattern: string,

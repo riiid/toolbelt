@@ -1,4 +1,4 @@
-import { parse as parseYaml } from "https://deno.land/std@0.126.0/encoding/yaml.ts";
+import { parse as parseYaml } from "https://deno.land/std@0.138.0/encoding/yaml.ts";
 
 export interface ClientRoles {
   [clientName: string]: string[];

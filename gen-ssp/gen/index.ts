@@ -7,7 +7,7 @@ import genUrichk from "./urichk.ts";
 import genFixture2 from "./fixture2.ts";
 import genPbkit from "./pbkit.ts";
 
-import { emptyDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
+import { emptyDir } from "https://deno.land/std@0.138.0/fs/mod.ts";
 import { Command, EnumType } from "https://deno.land/x/cliffy@v0.20.1/mod.ts";
 
 const defaultPollapoDir = ".pollapo";

@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.126.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.138.0/testing/asserts.ts";
 import { getImportRaw } from "./getImportRaw.ts";
 
 const typescriptContent =

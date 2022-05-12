@@ -1,5 +1,5 @@
 import { GenOptions } from "./index.ts";
-import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
+import * as path from "https://deno.land/std@0.138.0/path/mod.ts";
 import { RootNode } from "../pbjs/ast/index.ts";
 import {
   generateAppBridgeBrowserClient,

@@ -1,6 +1,6 @@
 import { GenOptions } from "./index.ts";
-import { ensureDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
-import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
+import { ensureDir } from "https://deno.land/std@0.138.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.138.0/path/mod.ts";
 import { globFiles } from "../misc/fs.ts";
 import { generateKeycloakUtil, getClientRoles } from "../keycloak.ts";
 

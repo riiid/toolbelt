@@ -4,8 +4,8 @@ import {
   createReactComponentReExportContent,
   createReactComponentStoriesContent,
   createReactComponentTestingContent,
-  ReactComponentOption,
 } from "./create-react-component-template.ts";
+import { CreateReactComponentOption } from "./CreateReactComponentOption.ts";
 import { createFile } from "../utils/createFile.ts";
 
 if (import.meta.main) {
@@ -22,8 +22,13 @@ example.
     `)
     .arguments("<dir:string> <name:string>")
     .option("-F, --forwardRef", "generate forwardRef component")
+    .option("-N, --onlyNamedExport", "whether use only named export or not")
     .action(
-      async (options: ReactComponentOption, dir: string, name: string) => {
+      async (
+        options: CreateReactComponentOption,
+        dir: string,
+        name: string,
+      ) => {
         if (!dir || !name) throw Error("invalid arguments");
         await createFile(
           `${dir}/${name}`,
