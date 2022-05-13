@@ -1,6 +1,6 @@
 import { GenOptions } from "./index.ts";
-import { ensureDir } from "https://deno.land/std@0.126.0/fs/mod.ts";
-import * as path from "https://deno.land/std@0.126.0/path/mod.ts";
+import { ensureDir } from "https://deno.land/std@0.138.0/fs/mod.ts";
+import * as path from "https://deno.land/std@0.138.0/path/mod.ts";
 import { compile as compileNextjsNavigationHook } from "https://deno.land/x/urichk@v0.0.3/compile/nextjs-navigation-hook.ts";
 import { compile as compileNextjsSearchParamsHook } from "https://deno.land/x/urichk@v0.0.3/compile/nextjs-search-params-hook.ts";
 import { kebabToPascal } from "../misc/case.ts";

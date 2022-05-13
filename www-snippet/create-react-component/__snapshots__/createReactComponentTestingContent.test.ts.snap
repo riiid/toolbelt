@@ -1,0 +1,29 @@
+export const snapshot = {};
+
+snapshot[`should return correct react component testing. 1`] = `
+'import { render } from "@testing-library/react";
+import LoremIpsum from "./LoremIpsum";
+
+describe("<LoremIpsum />", () => {
+  it("should render children correctly", () => {
+    const content = "Lorem Ipsum";
+    const { queryByText } = render(<LoremIpsum>{content}</LoremIpsum>);
+    expect(queryByText("Lorem Ipsum")).toBeInTheDocument();
+  });
+});
+'
+`;
+
+snapshot[`should return correct react component testing. 2`] = `
+'import { render } from "@testing-library/react";
+import { LoremIpsum } from "./LoremIpsum";
+
+describe("<LoremIpsum />", () => {
+  it("should render children correctly", () => {
+    const content = "Lorem Ipsum";
+    const { queryByText } = render(<LoremIpsum>{content}</LoremIpsum>);
+    expect(queryByText("Lorem Ipsum")).toBeInTheDocument();
+  });
+});
+'
+`;

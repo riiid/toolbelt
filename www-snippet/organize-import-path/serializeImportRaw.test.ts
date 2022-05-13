@@ -1,7 +1,7 @@
 import { Node } from "./types.ts";
 import { getImportRaw } from "./getImportRaw.ts";
 import { parseImportRaw } from "./parseImportRaw.ts";
-import { assertEquals } from "https://deno.land/std@0.126.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.138.0/testing/asserts.ts";
 import { serializeImportRaw } from "./serializeImportRaw.ts";
 
 Deno.test(`serializeImportRaw`, () => {

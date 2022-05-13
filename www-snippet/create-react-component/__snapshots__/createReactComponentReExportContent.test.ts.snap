@@ -1,0 +1,12 @@
+export const snapshot = {};
+
+snapshot[`should return correct react component re-export. 1`] = `
+'export { default } from "./LoremIpsum";
+export * from "./LoremIpsum";
+'
+`;
+
+snapshot[`should return correct react component re-export. 2`] = `
+'export * from "./LoremIpsum";
+  '
+`;
