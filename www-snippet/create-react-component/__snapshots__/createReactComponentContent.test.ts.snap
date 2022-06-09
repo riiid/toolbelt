@@ -2,29 +2,30 @@ export const snapshot = {};
 
 snapshot[`should return correct react component. 1`] = `
 'import React, { memo, PropsWithChildren } from "react";
+
 export interface LoremIpsumProps {}
 
-const LoremIpsum = (({}: PropsWithChildren<LoremIpsumProps>) => {
+const LoremIpsum = memo((({}: PropsWithChildren<LoremIpsumProps>) => {
   return <>LoremIpsum</>;
-});
+}));
 
-export default memo(LoremIpsum);
+export default LoremIpsum;
 '
 `;
 
 snapshot[`should return correct react component. 2`] = `
-'import React, { forwardRef, memo } from "react";
+'import React, { forwardRef, memo, HTMLAttributes } from "react";
 
 type RefElement = HTMLDivElement;
-type RefElementProps = React.HTMLAttributes<HTMLDivElement>;
+type RefElementProps = HTMLAttributes<HTMLDivElement>;
 
 export interface LoremIpsumProps extends RefElementProps {}
 
-const LoremIpsum = forwardRef<RefElement, LoremIpsumProps>((props, ref) => {
+const LoremIpsum = memo(forwardRef<RefElement, LoremIpsumProps>((props, ref) => {
   return <div ref={ref} {...props}>Lorem Ipsum</div>;
-});
+}));
 
-export default memo(LoremIpsum)
+export default LoremIpsum;
 
 LoremIpsum.displayName = "LoremIpsum";
 '
@@ -32,29 +33,30 @@ LoremIpsum.displayName = "LoremIpsum";
 
 snapshot[`should return correct react component. 3`] = `
 'import React, { memo, PropsWithChildren } from "react";
+
 export interface LoremIpsumProps {}
 
-const LoremIpsum = (({}: PropsWithChildren<LoremIpsumProps>) => {
+export const LoremIpsum = memo((({}: PropsWithChildren<LoremIpsumProps>) => {
   return <>LoremIpsum</>;
-});
+}));
 
-export { LoremIpsum: memo(LoremIpsum) };
+
 '
 `;
 
 snapshot[`should return correct react component. 4`] = `
-'import React, { forwardRef, memo } from "react";
+'import React, { forwardRef, memo, HTMLAttributes } from "react";
 
 type RefElement = HTMLDivElement;
-type RefElementProps = React.HTMLAttributes<HTMLDivElement>;
+type RefElementProps = HTMLAttributes<HTMLDivElement>;
 
 export interface LoremIpsumProps extends RefElementProps {}
 
-const LoremIpsum = forwardRef<RefElement, LoremIpsumProps>((props, ref) => {
+export const LoremIpsum = memo(forwardRef<RefElement, LoremIpsumProps>((props, ref) => {
   return <div ref={ref} {...props}>Lorem Ipsum</div>;
-});
+}));
 
-export { LoremIpsum: memo(LoremIpsum) }
+
 
 LoremIpsum.displayName = "LoremIpsum";
 '
