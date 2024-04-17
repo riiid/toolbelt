@@ -1,7 +1,7 @@
 import { walk } from "https://deno.land/std@0.138.0/fs/walk.ts";
 import * as path from "https://deno.land/std@0.138.0/path/mod.ts";
-import { parse } from "https://deno.land/x/urichk@v0.0.10/index.ts";
-import type { Urichk } from "https://deno.land/x/urichk@v0.0.10/ast.ts";
+import { parse } from "https://deno.land/x/urichk@v0.0.11/index.ts";
+import type { Urichk } from "https://deno.land/x/urichk@v0.0.11/ast.ts";
 
 export interface UrichkFile {
   name: string;
